@@ -15,12 +15,13 @@ namespace ProyectoOctavo
     {
         SqlConnection con = new SqlConnection();
 
-        string cs= "Data Source=DESKTOP-RBGA42V;Initial Catalog=ProyectoOctavoUserTypes;Integrated Security=True"; 
+        string cs = "Data Source=DESKTOP-RBGA42V;Initial Catalog=ProyectoOctavoUserTypes;Integrated Security=True";
         public Entrar()
-        { InitializeComponent();
+        {
+            InitializeComponent();
             SqlConnection con = new SqlConnection();
             con.ConnectionString = "Data Source=DESKTOP-RBGA42V;Initial Catalog=ProyectoOctavoUserTypes;Integrated Security=True";
-           
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -46,21 +47,44 @@ namespace ProyectoOctavo
                 cmd.Parameters.AddWithValue("@password", txtContrasenna.Text);
                 con.Open();
                 SqlDataAdapter adapt = new SqlDataAdapter(cmd);
-                DataSet ds = new DataSet();
+                DataTable ds = new DataTable();
                 adapt.Fill(ds);
                 con.Close();
-                int count = ds.Tables[0].Rows.Count;
+               // int count = ds.Tables[0].Rows.Count;
+
                 //If count is equal to 1, than show frmMain form
-                if (count == 1)
+                if (ds.Rows.Count == 1)
                 {
-                    MessageBox.Show("Login Successful!");
-                    this.Hide();
-                    LogOut fm = new LogOut();
-                    fm.Show();
+                    switch (ds.Rows[0]["NameTypeUser"] as string)
+                    {
+                        case "SuperUser":
+                            {
+                                //this.Hide();
+                                //AdminMenu ss = new AdminMenu();
+                                //ss.Show();
+                                MessageBox.Show("MAMALON");
+
+                                break;
+                            }
+                        case "Ventas":
+                            {
+                                //this.Hide();
+                                //AdminMenu ss = new AdminMenu();
+                                //ss.Show();
+                                MessageBox.Show("MAMALONVENTAS");
+
+                                break;
+                            }
+                        default:
+                            {
+                                MessageBox.Show("NOTBABY");// ... handle unexpected roles here...
+                                break;
+                            }
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Login Failed!");
+                    MessageBox.Show("Algo esta mal, revisa tus datos.");
                 }
             }
             catch (Exception ex)
