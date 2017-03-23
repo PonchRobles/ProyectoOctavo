@@ -19,7 +19,9 @@ namespace ProyectoOctavo.Menus
 
         private void txtPermisos_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+           PantallaPermisosUsuario.PermisosSuperUsuario ss = new PantallaPermisosUsuario.PermisosSuperUsuario();
+            ss.Show();
         }
     }
 }

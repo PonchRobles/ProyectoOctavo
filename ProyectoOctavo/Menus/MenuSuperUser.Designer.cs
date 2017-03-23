@@ -31,6 +31,7 @@
             this.txtPermisos = new System.Windows.Forms.Button();
             this.txtTipoDeUsuario = new System.Windows.Forms.Button();
             this.txtUsuarios = new System.Windows.Forms.Button();
+            this.txtSalir = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtPermisos
@@ -61,11 +62,21 @@
             this.txtUsuarios.Text = "Usuarios";
             this.txtUsuarios.UseVisualStyleBackColor = true;
             // 
+            // txtSalir
+            // 
+            this.txtSalir.Location = new System.Drawing.Point(356, 353);
+            this.txtSalir.Name = "txtSalir";
+            this.txtSalir.Size = new System.Drawing.Size(75, 23);
+            this.txtSalir.TabIndex = 3;
+            this.txtSalir.Text = "Salir";
+            this.txtSalir.UseVisualStyleBackColor = true;
+            // 
             // MenuSuperUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(443, 388);
+            this.Controls.Add(this.txtSalir);
             this.Controls.Add(this.txtUsuarios);
             this.Controls.Add(this.txtTipoDeUsuario);
             this.Controls.Add(this.txtPermisos);
@@ -80,5 +91,6 @@
         private System.Windows.Forms.Button txtPermisos;
         private System.Windows.Forms.Button txtTipoDeUsuario;
         private System.Windows.Forms.Button txtUsuarios;
+        private System.Windows.Forms.Button txtSalir;
     }
 }

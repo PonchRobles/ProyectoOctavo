@@ -59,10 +59,10 @@ namespace ProyectoOctavo
                     {
                         case "SuperUser":
                             {
-                                //this.Hide();
-                                //AdminMenu ss = new AdminMenu();
-                                //ss.Show();
-                                MessageBox.Show("MAMALON");
+                                this.Hide();
+                               Menus.MenuSuperUser ss = new Menus.MenuSuperUser();
+                                ss.Show();
+                               // MessageBox.Show("MAMALON");
 
                                 break;
                             }
@@ -77,7 +77,7 @@ namespace ProyectoOctavo
                             }
                         default:
                             {
-                                MessageBox.Show("NOTBABY");// ... handle unexpected roles here...
+                                MessageBox.Show("NOTBABY");
                                 break;
                             }
                     }
