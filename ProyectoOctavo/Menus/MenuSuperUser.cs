@@ -23,5 +23,12 @@ namespace ProyectoOctavo.Menus
            PantallaPermisosUsuario.PermisosSuperUsuario ss = new PantallaPermisosUsuario.PermisosSuperUsuario();
             ss.Show();
         }
+
+        private void txtUsuarios_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            PantallaPermisosUsuario.CrearUsuario ss = new PantallaPermisosUsuario.CrearUsuario();
+            ss.Show();
+        }
     }
 }

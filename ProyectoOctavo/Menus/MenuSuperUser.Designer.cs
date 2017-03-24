@@ -61,6 +61,7 @@
             this.txtUsuarios.TabIndex = 2;
             this.txtUsuarios.Text = "Usuarios";
             this.txtUsuarios.UseVisualStyleBackColor = true;
+            this.txtUsuarios.Click += new System.EventHandler(this.txtUsuarios_Click);
             // 
             // txtSalir
             // 

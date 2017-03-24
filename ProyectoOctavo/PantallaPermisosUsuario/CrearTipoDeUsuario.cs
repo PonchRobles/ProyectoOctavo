@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ProyectoOctavo.PantallaPermisosUsuario
 {
-    public partial class CrearUsuarioOModificado : Form
+    public partial class CrearTipoDeUsuario : Form
     {
-        public CrearUsuarioOModificado()
+        public CrearTipoDeUsuario()
         {
             InitializeComponent();
         }

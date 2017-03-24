@@ -55,9 +55,9 @@ namespace ProyectoOctavo
                 //If count is equal to 1, than show frmMain form
                 if (ds.Rows.Count == 1)
                 {
-                    switch (ds.Rows[0]["NameTypeUser"] as string)
+                    switch (ds.Rows[0]["UserTypeId"] as int?)
                     {
-                        case "SuperUser":
+                        case 1:
                             {
                                 this.Hide();
                                Menus.MenuSuperUser ss = new Menus.MenuSuperUser();
@@ -66,7 +66,7 @@ namespace ProyectoOctavo
 
                                 break;
                             }
-                        case "Ventas":
+                        case 2:
                             {
                                 //this.Hide();
                                 //AdminMenu ss = new AdminMenu();
