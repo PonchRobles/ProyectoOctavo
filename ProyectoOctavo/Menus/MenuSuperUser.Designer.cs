@@ -52,6 +52,7 @@
             this.txtTipoDeUsuario.TabIndex = 1;
             this.txtTipoDeUsuario.Text = "Tipo de Usuario";
             this.txtTipoDeUsuario.UseVisualStyleBackColor = true;
+            this.txtTipoDeUsuario.Click += new System.EventHandler(this.txtTipoDeUsuario_Click);
             // 
             // txtUsuarios
             // 
@@ -71,6 +72,7 @@
             this.txtSalir.TabIndex = 3;
             this.txtSalir.Text = "Salir";
             this.txtSalir.UseVisualStyleBackColor = true;
+            this.txtSalir.Click += new System.EventHandler(this.txtSalir_Click);
             // 
             // MenuSuperUser
             // 

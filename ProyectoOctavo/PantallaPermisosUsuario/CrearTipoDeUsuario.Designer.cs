@@ -31,6 +31,7 @@
             this.btnCrear = new System.Windows.Forms.Button();
             this.txtTypeUserName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnRegresar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCrear
@@ -41,28 +42,41 @@
             this.btnCrear.TabIndex = 0;
             this.btnCrear.Text = "Crear";
             this.btnCrear.UseVisualStyleBackColor = true;
+            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
             // 
             // txtTypeUserName
             // 
-            this.txtTypeUserName.Location = new System.Drawing.Point(113, 108);
+            this.txtTypeUserName.Location = new System.Drawing.Point(91, 108);
             this.txtTypeUserName.Name = "txtTypeUserName";
             this.txtTypeUserName.Size = new System.Drawing.Size(100, 20);
             this.txtTypeUserName.TabIndex = 1;
+            this.txtTypeUserName.TextChanged += new System.EventHandler(this.txtTypeUserName_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(105, 92);
+            this.label1.Location = new System.Drawing.Point(83, 92);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(108, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Nombre de TypeUser";
+            // 
+            // btnRegresar
+            // 
+            this.btnRegresar.Location = new System.Drawing.Point(221, 247);
+            this.btnRegresar.Name = "btnRegresar";
+            this.btnRegresar.Size = new System.Drawing.Size(75, 23);
+            this.btnRegresar.TabIndex = 3;
+            this.btnRegresar.Text = "Regresar";
+            this.btnRegresar.UseVisualStyleBackColor = true;
+            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
             // CrearTipoDeUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(308, 282);
+            this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtTypeUserName);
             this.Controls.Add(this.btnCrear);
@@ -78,5 +92,6 @@
         private System.Windows.Forms.Button btnCrear;
         private System.Windows.Forms.TextBox txtTypeUserName;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnRegresar;
     }
 }

@@ -13,40 +13,54 @@ namespace ProyectoOctavo.PantallaPermisosUsuario
 {
     public partial class CrearUsuario : Form
     {
+        Menus.MenuSuperUser m;
         public CrearUsuario()
         {
             InitializeComponent();
             refreshdata();
+          
+
         }
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
-            //SqlConnection con = new SqlConnection("Data Source=NiluNilesh;Integrated Security=True");  
-            SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-RBGA42V;Initial Catalog=ProyectoOctavoUserTypes;Integrated Security=True");
 
-            // SqlCommand cmd = new SqlCommand("Select * from Users where NameUser=@nameuser and Password=@password", con);
-            //  SqlCommand cmd = new SqlCommand("sp_insert", con);
-            SqlCommand cmd = new SqlCommand("insert into Users(NameUser, Password,UserTypeId)values(@NameUser, @Password,@UserTypeId)", con);
-            //cmd.CommandType = CommandType.StoredProcedure;
-            DataTable ds = new DataTable();
-            cmd.Parameters.AddWithValue("@NameUser", txtUsuario.Text);
-            cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
-         cmd.Parameters.AddWithValue("@UserTypeId",cbxTypeUser.SelectedIndex);
-
-            con.Open();
-            int i = cmd.ExecuteNonQuery();
-
-            con.Close();
-
-            if (i != 0)
+            if (txtUsuario.Text == string.Empty && txtPassword.Text == string.Empty)
             {
-                MessageBox.Show(i + "Data Saved");
+                MessageBox.Show("Alguno de los campos Usuario y Password estan vacios");
+
             }
+            try
+            {
+                SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-RBGA42V;Initial Catalog=ProyectoOctavoUserTypes;Integrated Security=True");
+                SqlCommand cmd = new SqlCommand("insert into Users(NameUser, Password,UserTypeId)values(@NameUser, @Password,@UserTypeId)", con);
+
+                DataTable ds = new DataTable();
+                cmd.Parameters.AddWithValue("@NameUser", txtUsuario.Text);
+                cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
+                cmd.Parameters.AddWithValue("@UserTypeId", cbxTypeUser.SelectedIndex);
+
+                con.Open();
+                int i = cmd.ExecuteNonQuery();
+
+                con.Close();
+
+                if (i != 0)
+                {
+                    MessageBox.Show(i + "Data Saved");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message+"CAMPOS VACIOS");
+            }
+
         }
 
         private void cbxTypeUser_SelectedIndexChanged(object sender, EventArgs e)
         {
-        // if (cbxTypeUser == null) { MessageBox.Show("YEA"); };
+            // if (cbxTypeUser == null) { MessageBox.Show("YEA"); };
 
         }
         public void refreshdata()
@@ -71,6 +85,13 @@ namespace ProyectoOctavo.PantallaPermisosUsuario
             cbxTypeUser.DataSource = dt;
 
             con.Close();
+        }
+
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            m = new Menus.MenuSuperUser();
+            this.Show();
         }
     }
 }
