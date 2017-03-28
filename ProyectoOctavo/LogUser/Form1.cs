@@ -33,7 +33,7 @@ namespace ProyectoOctavo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (txtUser.Text == "" || txtContrasenna.Text == "")
+if (txtUser.Text == "" || txtContrasenna.Text == "")
             {
                 MessageBox.Show("Please provide UserName and Password");
                 return;

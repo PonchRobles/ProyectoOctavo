@@ -28,15 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnCrear = new System.Windows.Forms.Button();
             this.txtTypeUserName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnRegresar = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.proyectoOctavoUserTypesDataSet = new ProyectoOctavo.ProyectoOctavoUserTypesDataSet();
+            this.privilegiosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.privilegiosTableAdapter = new ProyectoOctavo.ProyectoOctavoUserTypesDataSetTableAdapters.PrivilegiosTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.proyectoOctavoUserTypesDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.privilegiosBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCrear
             // 
-            this.btnCrear.Location = new System.Drawing.Point(116, 134);
+            this.btnCrear.Location = new System.Drawing.Point(116, 198);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(75, 23);
             this.btnCrear.TabIndex = 0;
@@ -71,17 +78,46 @@
             this.btnRegresar.UseVisualStyleBackColor = true;
             this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.DataSource = this.privilegiosBindingSource;
+            this.comboBox1.DisplayMember = "NamePrivilegio";
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(91, 135);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(100, 21);
+            this.comboBox1.TabIndex = 4;
+            this.comboBox1.ValueMember = "IdPrivilegio";
+            // 
+            // proyectoOctavoUserTypesDataSet
+            // 
+            this.proyectoOctavoUserTypesDataSet.DataSetName = "ProyectoOctavoUserTypesDataSet";
+            this.proyectoOctavoUserTypesDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // privilegiosBindingSource
+            // 
+            this.privilegiosBindingSource.DataMember = "Privilegios";
+            this.privilegiosBindingSource.DataSource = this.proyectoOctavoUserTypesDataSet;
+            // 
+            // privilegiosTableAdapter
+            // 
+            this.privilegiosTableAdapter.ClearBeforeFill = true;
+            // 
             // CrearTipoDeUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(308, 282);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtTypeUserName);
             this.Controls.Add(this.btnCrear);
             this.Name = "CrearTipoDeUsuario";
             this.Text = "CrearTipoDeUsuario";
+            this.Load += new System.EventHandler(this.CrearTipoDeUsuario_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.proyectoOctavoUserTypesDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.privilegiosBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -93,5 +129,9 @@
         private System.Windows.Forms.TextBox txtTypeUserName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnRegresar;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private ProyectoOctavoUserTypesDataSet proyectoOctavoUserTypesDataSet;
+        private System.Windows.Forms.BindingSource privilegiosBindingSource;
+        private ProyectoOctavoUserTypesDataSetTableAdapters.PrivilegiosTableAdapter privilegiosTableAdapter;
     }
 }

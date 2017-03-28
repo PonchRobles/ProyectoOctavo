@@ -27,11 +27,11 @@ namespace ProyectoOctavo.PantallaPermisosUsuario
         {
            
             SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-RBGA42V;Initial Catalog=ProyectoOctavoUserTypes;Integrated Security=True");
-             SqlCommand cmd = new SqlCommand("insert into TypeUser (NameTypeUser)values(@NameTypeUser)", con);
+             SqlCommand cmd = new SqlCommand("insert into TypeUser (NameTypeUser,IdPrivilegio)values(@NameTypeUser,@IdPrivilegio)", con);
            
             DataTable ds = new DataTable();
             cmd.Parameters.AddWithValue("@NameTypeUser", txtTypeUserName.Text);
-           
+            cmd.Parameters.AddWithValue("@IdPrivilegio", comboBox1.SelectedIndex);
 
             con.Open();
             int i = cmd.ExecuteNonQuery();
@@ -49,6 +49,13 @@ namespace ProyectoOctavo.PantallaPermisosUsuario
             this.Hide();
             Menus.MenuSuperUser ss = new Menus.MenuSuperUser();
             ss.Show();
+        }
+
+        private void CrearTipoDeUsuario_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'proyectoOctavoUserTypesDataSet.Privilegios' table. You can move, or remove it, as needed.
+            this.privilegiosTableAdapter.Fill(this.proyectoOctavoUserTypesDataSet.Privilegios);
+
         }
     }
 }

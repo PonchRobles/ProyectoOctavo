@@ -32,6 +32,10 @@ namespace ProyectoOctavo {
         
         private global::System.Data.DataRelation relationFK_Users_TypeUser;
         
+        private global::System.Data.DataRelation relationFK_TypeUser_Privilegios;
+        
+        private global::System.Data.DataRelation relationFK_Privilegios_TypeUser;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -245,6 +249,8 @@ namespace ProyectoOctavo {
                 }
             }
             this.relationFK_Users_TypeUser = this.Relations["FK_Users_TypeUser"];
+            this.relationFK_TypeUser_Privilegios = this.Relations["FK_TypeUser_Privilegios"];
+            this.relationFK_Privilegios_TypeUser = this.Relations["FK_Privilegios_TypeUser"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -265,6 +271,14 @@ namespace ProyectoOctavo {
                         this.tableTypeUser.UderTypeIdColumn}, new global::System.Data.DataColumn[] {
                         this.tableUsers.UserTypeIdColumn}, false);
             this.Relations.Add(this.relationFK_Users_TypeUser);
+            this.relationFK_TypeUser_Privilegios = new global::System.Data.DataRelation("FK_TypeUser_Privilegios", new global::System.Data.DataColumn[] {
+                        this.tablePrivilegios.IdPrivilegioColumn}, new global::System.Data.DataColumn[] {
+                        this.tableTypeUser.IdPrivilegioColumn}, false);
+            this.Relations.Add(this.relationFK_TypeUser_Privilegios);
+            this.relationFK_Privilegios_TypeUser = new global::System.Data.DataRelation("FK_Privilegios_TypeUser", new global::System.Data.DataColumn[] {
+                        this.tableTypeUser.UderTypeIdColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePrivilegios.UderTypeIdColumn}, false);
+            this.Relations.Add(this.relationFK_Privilegios_TypeUser);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -671,6 +685,10 @@ namespace ProyectoOctavo {
             
             private global::System.Data.DataColumn columnNamePrivilegio;
             
+            private global::System.Data.DataColumn columnUderTypeId;
+            
+            private global::System.Data.DataColumn columnStatusPrivilegio;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public PrivilegiosDataTable() {
@@ -722,6 +740,22 @@ namespace ProyectoOctavo {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn UderTypeIdColumn {
+                get {
+                    return this.columnUderTypeId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn StatusPrivilegioColumn {
+                get {
+                    return this.columnStatusPrivilegio;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -757,11 +791,16 @@ namespace ProyectoOctavo {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PrivilegiosRow AddPrivilegiosRow(string NamePrivilegio) {
+            public PrivilegiosRow AddPrivilegiosRow(string NamePrivilegio, TypeUserRow parentTypeUserRowByFK_Privilegios_TypeUser, int StatusPrivilegio) {
                 PrivilegiosRow rowPrivilegiosRow = ((PrivilegiosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        NamePrivilegio};
+                        NamePrivilegio,
+                        null,
+                        StatusPrivilegio};
+                if ((parentTypeUserRowByFK_Privilegios_TypeUser != null)) {
+                    columnValuesArray[2] = parentTypeUserRowByFK_Privilegios_TypeUser[0];
+                }
                 rowPrivilegiosRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPrivilegiosRow);
                 return rowPrivilegiosRow;
@@ -793,6 +832,8 @@ namespace ProyectoOctavo {
             internal void InitVars() {
                 this.columnIdPrivilegio = base.Columns["IdPrivilegio"];
                 this.columnNamePrivilegio = base.Columns["NamePrivilegio"];
+                this.columnUderTypeId = base.Columns["UderTypeId"];
+                this.columnStatusPrivilegio = base.Columns["StatusPrivilegio"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -802,6 +843,10 @@ namespace ProyectoOctavo {
                 base.Columns.Add(this.columnIdPrivilegio);
                 this.columnNamePrivilegio = new global::System.Data.DataColumn("NamePrivilegio", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNamePrivilegio);
+                this.columnUderTypeId = new global::System.Data.DataColumn("UderTypeId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUderTypeId);
+                this.columnStatusPrivilegio = new global::System.Data.DataColumn("StatusPrivilegio", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStatusPrivilegio);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnIdPrivilegio}, true));
                 this.columnIdPrivilegio.AutoIncrement = true;
@@ -949,6 +994,8 @@ namespace ProyectoOctavo {
             
             private global::System.Data.DataColumn columnNameTypeUser;
             
+            private global::System.Data.DataColumn columnIdPrivilegio;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public TypeUserDataTable() {
@@ -1000,6 +1047,14 @@ namespace ProyectoOctavo {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IdPrivilegioColumn {
+                get {
+                    return this.columnIdPrivilegio;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1035,11 +1090,15 @@ namespace ProyectoOctavo {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TypeUserRow AddTypeUserRow(string NameTypeUser) {
+            public TypeUserRow AddTypeUserRow(string NameTypeUser, PrivilegiosRow parentPrivilegiosRowByFK_TypeUser_Privilegios) {
                 TypeUserRow rowTypeUserRow = ((TypeUserRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        NameTypeUser};
+                        NameTypeUser,
+                        null};
+                if ((parentPrivilegiosRowByFK_TypeUser_Privilegios != null)) {
+                    columnValuesArray[2] = parentPrivilegiosRowByFK_TypeUser_Privilegios[0];
+                }
                 rowTypeUserRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTypeUserRow);
                 return rowTypeUserRow;
@@ -1071,6 +1130,7 @@ namespace ProyectoOctavo {
             internal void InitVars() {
                 this.columnUderTypeId = base.Columns["UderTypeId"];
                 this.columnNameTypeUser = base.Columns["NameTypeUser"];
+                this.columnIdPrivilegio = base.Columns["IdPrivilegio"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1080,6 +1140,8 @@ namespace ProyectoOctavo {
                 base.Columns.Add(this.columnUderTypeId);
                 this.columnNameTypeUser = new global::System.Data.DataColumn("NameTypeUser", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNameTypeUser);
+                this.columnIdPrivilegio = new global::System.Data.DataColumn("IdPrivilegio", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIdPrivilegio);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnUderTypeId}, true));
                 this.columnUderTypeId.AutoIncrement = true;
@@ -1090,6 +1152,7 @@ namespace ProyectoOctavo {
                 this.columnUderTypeId.Unique = true;
                 this.columnNameTypeUser.AllowDBNull = false;
                 this.columnNameTypeUser.MaxLength = 50;
+                this.columnIdPrivilegio.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1338,6 +1401,84 @@ namespace ProyectoOctavo {
                     this[this.tablePrivilegios.NamePrivilegioColumn] = value;
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int UderTypeId {
+                get {
+                    try {
+                        return ((int)(this[this.tablePrivilegios.UderTypeIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'UderTypeId\' in table \'Privilegios\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePrivilegios.UderTypeIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int StatusPrivilegio {
+                get {
+                    try {
+                        return ((int)(this[this.tablePrivilegios.StatusPrivilegioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'StatusPrivilegio\' in table \'Privilegios\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePrivilegios.StatusPrivilegioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TypeUserRow TypeUserRow {
+                get {
+                    return ((TypeUserRow)(this.GetParentRow(this.Table.ParentRelations["FK_Privilegios_TypeUser"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Privilegios_TypeUser"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsUderTypeIdNull() {
+                return this.IsNull(this.tablePrivilegios.UderTypeIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetUderTypeIdNull() {
+                this[this.tablePrivilegios.UderTypeIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsStatusPrivilegioNull() {
+                return this.IsNull(this.tablePrivilegios.StatusPrivilegioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetStatusPrivilegioNull() {
+                this[this.tablePrivilegios.StatusPrivilegioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TypeUserRow[] GetTypeUserRows() {
+                if ((this.Table.ChildRelations["FK_TypeUser_Privilegios"] == null)) {
+                    return new TypeUserRow[0];
+                }
+                else {
+                    return ((TypeUserRow[])(base.GetChildRows(this.Table.ChildRelations["FK_TypeUser_Privilegios"])));
+                }
+            }
         }
         
         /// <summary>
@@ -1378,12 +1519,45 @@ namespace ProyectoOctavo {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int IdPrivilegio {
+                get {
+                    return ((int)(this[this.tableTypeUser.IdPrivilegioColumn]));
+                }
+                set {
+                    this[this.tableTypeUser.IdPrivilegioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PrivilegiosRow PrivilegiosRow {
+                get {
+                    return ((PrivilegiosRow)(this.GetParentRow(this.Table.ParentRelations["FK_TypeUser_Privilegios"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_TypeUser_Privilegios"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public UsersRow[] GetUsersRows() {
                 if ((this.Table.ChildRelations["FK_Users_TypeUser"] == null)) {
                     return new UsersRow[0];
                 }
                 else {
                     return ((UsersRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Users_TypeUser"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PrivilegiosRow[] GetPrivilegiosRows() {
+                if ((this.Table.ChildRelations["FK_Privilegios_TypeUser"] == null)) {
+                    return new PrivilegiosRow[0];
+                }
+                else {
+                    return ((PrivilegiosRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Privilegios_TypeUser"])));
                 }
             }
         }
@@ -2000,29 +2174,41 @@ SELECT IdUser, NameUser, Password, UserTypeId FROM Users WHERE (IdUser = @IdUser
             tableMapping.DataSetTable = "Privilegios";
             tableMapping.ColumnMappings.Add("IdPrivilegio", "IdPrivilegio");
             tableMapping.ColumnMappings.Add("NamePrivilegio", "NamePrivilegio");
+            tableMapping.ColumnMappings.Add("UderTypeId", "UderTypeId");
+            tableMapping.ColumnMappings.Add("StatusPrivilegio", "StatusPrivilegio");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Privilegios] WHERE (([IdPrivilegio] = @Original_IdPrivilegio) " +
-                "AND ([NamePrivilegio] = @Original_NamePrivilegio))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Privilegios] WHERE (([IdPrivilegio] = @Original_IdPrivilegio) AND ([NamePrivilegio] = @Original_NamePrivilegio) AND ((@IsNull_StatusPrivilegio = 1 AND [StatusPrivilegio] IS NULL) OR ([StatusPrivilegio] = @Original_StatusPrivilegio)) AND ((@IsNull_UderTypeId = 1 AND [UderTypeId] IS NULL) OR ([UderTypeId] = @Original_UderTypeId)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IdPrivilegio", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IdPrivilegio", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NamePrivilegio", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NamePrivilegio", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_StatusPrivilegio", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StatusPrivilegio", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StatusPrivilegio", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StatusPrivilegio", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_UderTypeId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UderTypeId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UderTypeId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UderTypeId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Privilegios] ([NamePrivilegio]) VALUES (@NamePrivilegio);\r\nSEL" +
-                "ECT IdPrivilegio, NamePrivilegio FROM Privilegios WHERE (IdPrivilegio = SCOPE_ID" +
-                "ENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Privilegios] ([NamePrivilegio], [StatusPrivilegio], [UderTypeId]) VALUES (@NamePrivilegio, @StatusPrivilegio, @UderTypeId);
+SELECT IdPrivilegio, NamePrivilegio, StatusPrivilegio, UderTypeId FROM Privilegios WHERE (IdPrivilegio = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NamePrivilegio", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NamePrivilegio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StatusPrivilegio", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StatusPrivilegio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UderTypeId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UderTypeId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Privilegios] SET [NamePrivilegio] = @NamePrivilegio WHERE (([IdPrivilegio] = @Original_IdPrivilegio) AND ([NamePrivilegio] = @Original_NamePrivilegio));
-SELECT IdPrivilegio, NamePrivilegio FROM Privilegios WHERE (IdPrivilegio = @IdPrivilegio)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Privilegios] SET [NamePrivilegio] = @NamePrivilegio, [StatusPrivilegio] = @StatusPrivilegio, [UderTypeId] = @UderTypeId WHERE (([IdPrivilegio] = @Original_IdPrivilegio) AND ([NamePrivilegio] = @Original_NamePrivilegio) AND ((@IsNull_StatusPrivilegio = 1 AND [StatusPrivilegio] IS NULL) OR ([StatusPrivilegio] = @Original_StatusPrivilegio)) AND ((@IsNull_UderTypeId = 1 AND [UderTypeId] IS NULL) OR ([UderTypeId] = @Original_UderTypeId)));
+SELECT IdPrivilegio, NamePrivilegio, StatusPrivilegio, UderTypeId FROM Privilegios WHERE (IdPrivilegio = @IdPrivilegio)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NamePrivilegio", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NamePrivilegio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StatusPrivilegio", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StatusPrivilegio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UderTypeId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UderTypeId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IdPrivilegio", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IdPrivilegio", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NamePrivilegio", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NamePrivilegio", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_StatusPrivilegio", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StatusPrivilegio", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StatusPrivilegio", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StatusPrivilegio", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_UderTypeId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UderTypeId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UderTypeId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UderTypeId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IdPrivilegio", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "IdPrivilegio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -2039,7 +2225,8 @@ SELECT IdPrivilegio, NamePrivilegio FROM Privilegios WHERE (IdPrivilegio = @IdPr
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT IdPrivilegio, NamePrivilegio FROM dbo.Privilegios";
+            this._commandCollection[0].CommandText = "SELECT IdPrivilegio, NamePrivilegio, StatusPrivilegio, UderTypeId FROM Privilegio" +
+                "s";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -2100,13 +2287,29 @@ SELECT IdPrivilegio, NamePrivilegio FROM Privilegios WHERE (IdPrivilegio = @IdPr
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_IdPrivilegio, string Original_NamePrivilegio) {
+        public virtual int Delete(int Original_IdPrivilegio, string Original_NamePrivilegio, global::System.Nullable<int> Original_StatusPrivilegio, global::System.Nullable<int> Original_UderTypeId) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_IdPrivilegio));
             if ((Original_NamePrivilegio == null)) {
                 throw new global::System.ArgumentNullException("Original_NamePrivilegio");
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_NamePrivilegio));
+            }
+            if ((Original_StatusPrivilegio.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_StatusPrivilegio.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            if ((Original_UderTypeId.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(Original_UderTypeId.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -2128,12 +2331,24 @@ SELECT IdPrivilegio, NamePrivilegio FROM Privilegios WHERE (IdPrivilegio = @IdPr
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string NamePrivilegio) {
+        public virtual int Insert(string NamePrivilegio, global::System.Nullable<int> StatusPrivilegio, global::System.Nullable<int> UderTypeId) {
             if ((NamePrivilegio == null)) {
                 throw new global::System.ArgumentNullException("NamePrivilegio");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((string)(NamePrivilegio));
+            }
+            if ((StatusPrivilegio.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((int)(StatusPrivilegio.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((UderTypeId.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((int)(UderTypeId.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -2155,21 +2370,49 @@ SELECT IdPrivilegio, NamePrivilegio FROM Privilegios WHERE (IdPrivilegio = @IdPr
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string NamePrivilegio, int Original_IdPrivilegio, string Original_NamePrivilegio, int IdPrivilegio) {
+        public virtual int Update(string NamePrivilegio, global::System.Nullable<int> StatusPrivilegio, global::System.Nullable<int> UderTypeId, int Original_IdPrivilegio, string Original_NamePrivilegio, global::System.Nullable<int> Original_StatusPrivilegio, global::System.Nullable<int> Original_UderTypeId, int IdPrivilegio) {
             if ((NamePrivilegio == null)) {
                 throw new global::System.ArgumentNullException("NamePrivilegio");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(NamePrivilegio));
             }
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Original_IdPrivilegio));
+            if ((StatusPrivilegio.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(StatusPrivilegio.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((UderTypeId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(UderTypeId.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_IdPrivilegio));
             if ((Original_NamePrivilegio == null)) {
                 throw new global::System.ArgumentNullException("Original_NamePrivilegio");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Original_NamePrivilegio));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_NamePrivilegio));
             }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(IdPrivilegio));
+            if ((Original_StatusPrivilegio.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_StatusPrivilegio.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            if ((Original_UderTypeId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_UderTypeId.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(IdPrivilegio));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2190,8 +2433,8 @@ SELECT IdPrivilegio, NamePrivilegio FROM Privilegios WHERE (IdPrivilegio = @IdPr
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string NamePrivilegio, int Original_IdPrivilegio, string Original_NamePrivilegio) {
-            return this.Update(NamePrivilegio, Original_IdPrivilegio, Original_NamePrivilegio, Original_IdPrivilegio);
+        public virtual int Update(string NamePrivilegio, global::System.Nullable<int> StatusPrivilegio, global::System.Nullable<int> UderTypeId, int Original_IdPrivilegio, string Original_NamePrivilegio, global::System.Nullable<int> Original_StatusPrivilegio, global::System.Nullable<int> Original_UderTypeId) {
+            return this.Update(NamePrivilegio, StatusPrivilegio, UderTypeId, Original_IdPrivilegio, Original_NamePrivilegio, Original_StatusPrivilegio, Original_UderTypeId, Original_IdPrivilegio);
         }
     }
     
@@ -2318,29 +2561,34 @@ SELECT IdPrivilegio, NamePrivilegio FROM Privilegios WHERE (IdPrivilegio = @IdPr
             tableMapping.DataSetTable = "TypeUser";
             tableMapping.ColumnMappings.Add("UderTypeId", "UderTypeId");
             tableMapping.ColumnMappings.Add("NameTypeUser", "NameTypeUser");
+            tableMapping.ColumnMappings.Add("IdPrivilegio", "IdPrivilegio");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[TypeUser] WHERE (([UderTypeId] = @Original_UderTypeId) AND ([N" +
-                "ameTypeUser] = @Original_NameTypeUser))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [TypeUser] WHERE (([UderTypeId] = @Original_UderTypeId) AND ([NameTyp" +
+                "eUser] = @Original_NameTypeUser) AND ([IdPrivilegio] = @Original_IdPrivilegio))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UderTypeId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UderTypeId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NameTypeUser", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NameTypeUser", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IdPrivilegio", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IdPrivilegio", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[TypeUser] ([NameTypeUser]) VALUES (@NameTypeUser);\r\nSELECT Ude" +
-                "rTypeId, NameTypeUser FROM TypeUser WHERE (UderTypeId = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [TypeUser] ([NameTypeUser], [IdPrivilegio]) VALUES (@NameTypeUser, @I" +
+                "dPrivilegio);\r\nSELECT UderTypeId, NameTypeUser, IdPrivilegio FROM TypeUser WHERE" +
+                " (UderTypeId = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NameTypeUser", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NameTypeUser", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IdPrivilegio", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IdPrivilegio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[TypeUser] SET [NameTypeUser] = @NameTypeUser WHERE (([UderTypeId] =" +
-                " @Original_UderTypeId) AND ([NameTypeUser] = @Original_NameTypeUser));\r\nSELECT U" +
-                "derTypeId, NameTypeUser FROM TypeUser WHERE (UderTypeId = @UderTypeId)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [TypeUser] SET [NameTypeUser] = @NameTypeUser, [IdPrivilegio] = @IdPrivilegio WHERE (([UderTypeId] = @Original_UderTypeId) AND ([NameTypeUser] = @Original_NameTypeUser) AND ([IdPrivilegio] = @Original_IdPrivilegio));
+SELECT UderTypeId, NameTypeUser, IdPrivilegio FROM TypeUser WHERE (UderTypeId = @UderTypeId)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NameTypeUser", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NameTypeUser", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IdPrivilegio", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IdPrivilegio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UderTypeId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UderTypeId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NameTypeUser", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NameTypeUser", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IdPrivilegio", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IdPrivilegio", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UderTypeId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "UderTypeId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -2357,7 +2605,7 @@ SELECT IdPrivilegio, NamePrivilegio FROM Privilegios WHERE (IdPrivilegio = @IdPr
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT UderTypeId, NameTypeUser FROM dbo.TypeUser";
+            this._commandCollection[0].CommandText = "SELECT UderTypeId, NameTypeUser, IdPrivilegio FROM TypeUser";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -2418,7 +2666,7 @@ SELECT IdPrivilegio, NamePrivilegio FROM Privilegios WHERE (IdPrivilegio = @IdPr
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_UderTypeId, string Original_NameTypeUser) {
+        public virtual int Delete(int Original_UderTypeId, string Original_NameTypeUser, int Original_IdPrivilegio) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_UderTypeId));
             if ((Original_NameTypeUser == null)) {
                 throw new global::System.ArgumentNullException("Original_NameTypeUser");
@@ -2426,6 +2674,7 @@ SELECT IdPrivilegio, NamePrivilegio FROM Privilegios WHERE (IdPrivilegio = @IdPr
             else {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_NameTypeUser));
             }
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_IdPrivilegio));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2446,13 +2695,14 @@ SELECT IdPrivilegio, NamePrivilegio FROM Privilegios WHERE (IdPrivilegio = @IdPr
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string NameTypeUser) {
+        public virtual int Insert(string NameTypeUser, int IdPrivilegio) {
             if ((NameTypeUser == null)) {
                 throw new global::System.ArgumentNullException("NameTypeUser");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((string)(NameTypeUser));
             }
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(IdPrivilegio));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2473,21 +2723,23 @@ SELECT IdPrivilegio, NamePrivilegio FROM Privilegios WHERE (IdPrivilegio = @IdPr
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string NameTypeUser, int Original_UderTypeId, string Original_NameTypeUser, int UderTypeId) {
+        public virtual int Update(string NameTypeUser, int IdPrivilegio, int Original_UderTypeId, string Original_NameTypeUser, int Original_IdPrivilegio, int UderTypeId) {
             if ((NameTypeUser == null)) {
                 throw new global::System.ArgumentNullException("NameTypeUser");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(NameTypeUser));
             }
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Original_UderTypeId));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(IdPrivilegio));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_UderTypeId));
             if ((Original_NameTypeUser == null)) {
                 throw new global::System.ArgumentNullException("Original_NameTypeUser");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Original_NameTypeUser));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_NameTypeUser));
             }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(UderTypeId));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_IdPrivilegio));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(UderTypeId));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2508,8 +2760,8 @@ SELECT IdPrivilegio, NamePrivilegio FROM Privilegios WHERE (IdPrivilegio = @IdPr
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string NameTypeUser, int Original_UderTypeId, string Original_NameTypeUser) {
-            return this.Update(NameTypeUser, Original_UderTypeId, Original_NameTypeUser, Original_UderTypeId);
+        public virtual int Update(string NameTypeUser, int IdPrivilegio, int Original_UderTypeId, string Original_NameTypeUser, int Original_IdPrivilegio) {
+            return this.Update(NameTypeUser, IdPrivilegio, Original_UderTypeId, Original_NameTypeUser, Original_IdPrivilegio, Original_UderTypeId);
         }
     }
     
@@ -2652,21 +2904,21 @@ SELECT IdPrivilegio, NamePrivilegio FROM Privilegios WHERE (IdPrivilegio = @IdPr
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateUpdatedRows(ProyectoOctavoUserTypesDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._typeUserTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.TypeUser.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._typeUserTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._privilegiosTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Privilegios.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._privilegiosTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._typeUserTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.TypeUser.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._typeUserTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -2689,19 +2941,19 @@ SELECT IdPrivilegio, NamePrivilegio FROM Privilegios WHERE (IdPrivilegio = @IdPr
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateInsertedRows(ProyectoOctavoUserTypesDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._typeUserTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.TypeUser.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._typeUserTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._privilegiosTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Privilegios.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._privilegiosTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._typeUserTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.TypeUser.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._typeUserTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -2731,19 +2983,19 @@ SELECT IdPrivilegio, NamePrivilegio FROM Privilegios WHERE (IdPrivilegio = @IdPr
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._privilegiosTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Privilegios.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._privilegiosTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._typeUserTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.TypeUser.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._typeUserTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._privilegiosTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Privilegios.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._privilegiosTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
