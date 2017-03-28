@@ -76,6 +76,12 @@
     <Compile Include="Menus\MenuSuperUser.Designer.cs">
       <DependentUpon>MenuSuperUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="PantallaPermisosUsuario\CrearPrivilegio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PantallaPermisosUsuario\CrearPrivilegio.Designer.cs">
+      <DependentUpon>CrearPrivilegio.cs</DependentUpon>
+    </Compile>
     <Compile Include="PantallaPermisosUsuario\CrearTipoDeUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Menus\MenuSuperUser.resx">
       <DependentUpon>MenuSuperUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PantallaPermisosUsuario\CrearPrivilegio.resx">
+      <DependentUpon>CrearPrivilegio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PantallaPermisosUsuario\CrearTipoDeUsuario.resx">
       <DependentUpon>CrearTipoDeUsuario.cs</DependentUpon>

@@ -44,5 +44,13 @@ namespace ProyectoOctavo.Menus
             Close();
      
         }
+
+        private void btnPrivilegio_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            PantallaPermisosUsuario.CrearPrivilegio ss = new PantallaPermisosUsuario.CrearPrivilegio();
+            ss.Show();
+
+        }
     }
 }

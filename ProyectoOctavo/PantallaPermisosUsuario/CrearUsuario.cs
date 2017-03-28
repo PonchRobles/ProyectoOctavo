@@ -93,5 +93,10 @@ namespace ProyectoOctavo.PantallaPermisosUsuario
             m = new Menus.MenuSuperUser();
             this.Show();
         }
+
+        private void txtUsuario_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

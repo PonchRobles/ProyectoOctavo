@@ -32,6 +32,7 @@
             this.txtTipoDeUsuario = new System.Windows.Forms.Button();
             this.txtUsuarios = new System.Windows.Forms.Button();
             this.txtSalir = new System.Windows.Forms.Button();
+            this.btnPrivilegio = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtPermisos
@@ -74,11 +75,22 @@
             this.txtSalir.UseVisualStyleBackColor = true;
             this.txtSalir.Click += new System.EventHandler(this.txtSalir_Click);
             // 
+            // btnPrivilegio
+            // 
+            this.btnPrivilegio.Location = new System.Drawing.Point(139, 256);
+            this.btnPrivilegio.Name = "btnPrivilegio";
+            this.btnPrivilegio.Size = new System.Drawing.Size(140, 45);
+            this.btnPrivilegio.TabIndex = 4;
+            this.btnPrivilegio.Text = "Privilegio";
+            this.btnPrivilegio.UseVisualStyleBackColor = true;
+            this.btnPrivilegio.Click += new System.EventHandler(this.btnPrivilegio_Click);
+            // 
             // MenuSuperUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(443, 388);
+            this.Controls.Add(this.btnPrivilegio);
             this.Controls.Add(this.txtSalir);
             this.Controls.Add(this.txtUsuarios);
             this.Controls.Add(this.txtTipoDeUsuario);
@@ -95,5 +107,6 @@
         private System.Windows.Forms.Button txtTipoDeUsuario;
         private System.Windows.Forms.Button txtUsuarios;
         private System.Windows.Forms.Button txtSalir;
+        private System.Windows.Forms.Button btnPrivilegio;
     }
 }

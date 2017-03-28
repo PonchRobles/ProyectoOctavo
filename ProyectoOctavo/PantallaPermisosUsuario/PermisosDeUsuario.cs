@@ -28,16 +28,23 @@ namespace ProyectoOctavo.PantallaPermisosUsuario
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-RBGA42V;Initial Catalog=ProyectoOctavoUserTypes;Integrated Security=True");
-            SqlCommand cmd = new SqlCommand("select * from Privilegios where StatusPrivilegio=1", con);
+            SqlCommand cmd = new SqlCommand("select * from Privilegios", con);
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             sda.Fill(dt);
-
+  bool result;
+            int numberOfCalls;
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-               
-                    checkedListBox1.Items.Add(dt.Rows[i]["NamePrivilegio"].ToString());
-                    checkedListBox1.SetItemChecked(i, true);
+              
+                foreach (DataRow dr in dt.Rows)
+                {
+                    result = Int32.TryParse(dr["StatusPrivilegio"].ToString(), out numberOfCalls);
+                }
+                checkedListBox1.Items.Add(dt.Rows[i]["NamePrivilegio"].ToString());
+                //if (dt.Rows[i].ItemArray.)
+                //{ }
+                checkedListBox1.SetItemChecked(i, true);
               
                 //if (listBox1.SelectedIndex != 0)
                  //{
@@ -49,6 +56,11 @@ namespace ProyectoOctavo.PantallaPermisosUsuario
                 //
 
             }
+        }
+
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }
