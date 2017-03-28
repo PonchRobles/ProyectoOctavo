@@ -100,5 +100,19 @@ namespace ProyectoOctavo.PantallaPermisosUsuario
         {
           
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Menus.MenuSuperUser ss = new Menus.MenuSuperUser();
+            ss.Show();
+        }
+
+        private void CrearPrivilegio_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'proyectoOctavoUserTypesDataSet.Privilegios' table. You can move, or remove it, as needed.
+            this.privilegiosTableAdapter.Fill(this.proyectoOctavoUserTypesDataSet.Privilegios);
+
+        }
     }
 }

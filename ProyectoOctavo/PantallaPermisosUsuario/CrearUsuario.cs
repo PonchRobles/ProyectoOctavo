@@ -13,7 +13,7 @@ namespace ProyectoOctavo.PantallaPermisosUsuario
 {
     public partial class CrearUsuario : Form
     {
-        Menus.MenuSuperUser m;
+      
         public CrearUsuario()
         {
             InitializeComponent();
@@ -44,10 +44,14 @@ namespace ProyectoOctavo.PantallaPermisosUsuario
                 int i = cmd.ExecuteNonQuery();
 
                 con.Close();
-
+                dataGridView1.Update();
+                dataGridView1.Refresh();
                 if (i != 0)
                 {
-                    MessageBox.Show(i + "Data Saved");
+                    this.dataGridView1.Update();
+                    this.dataGridView1.Refresh();
+                    
+                    MessageBox.Show("Usuario creado!");
                 }
             }
             catch (Exception ex)
@@ -90,12 +94,19 @@ namespace ProyectoOctavo.PantallaPermisosUsuario
         private void btnRegresar_Click(object sender, EventArgs e)
         {
             this.Hide();
-            m = new Menus.MenuSuperUser();
-            this.Show();
+            Menus.MenuSuperUser ss = new Menus.MenuSuperUser();
+            ss.Show();
         }
 
         private void txtUsuario_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void CrearUsuario_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'proyectoOctavoUserTypesDataSet.Users' table. You can move, or remove it, as needed.
+            this.usersTableAdapter.Fill(this.proyectoOctavoUserTypesDataSet.Users);
 
         }
     }

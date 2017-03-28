@@ -37,31 +37,31 @@
             // 
             // txtPermisos
             // 
-            this.txtPermisos.Location = new System.Drawing.Point(139, 101);
+            this.txtPermisos.Location = new System.Drawing.Point(12, 12);
             this.txtPermisos.Name = "txtPermisos";
             this.txtPermisos.Size = new System.Drawing.Size(140, 47);
             this.txtPermisos.TabIndex = 0;
-            this.txtPermisos.Text = "Permisos";
+            this.txtPermisos.Text = "Ver Permisos";
             this.txtPermisos.UseVisualStyleBackColor = true;
             this.txtPermisos.Click += new System.EventHandler(this.txtPermisos_Click);
             // 
             // txtTipoDeUsuario
             // 
-            this.txtTipoDeUsuario.Location = new System.Drawing.Point(139, 205);
+            this.txtTipoDeUsuario.Location = new System.Drawing.Point(12, 269);
             this.txtTipoDeUsuario.Name = "txtTipoDeUsuario";
             this.txtTipoDeUsuario.Size = new System.Drawing.Size(140, 45);
             this.txtTipoDeUsuario.TabIndex = 1;
-            this.txtTipoDeUsuario.Text = "Tipo de Usuario";
+            this.txtTipoDeUsuario.Text = "Crear Tipo de Usuario";
             this.txtTipoDeUsuario.UseVisualStyleBackColor = true;
             this.txtTipoDeUsuario.Click += new System.EventHandler(this.txtTipoDeUsuario_Click);
             // 
             // txtUsuarios
             // 
-            this.txtUsuarios.Location = new System.Drawing.Point(139, 154);
+            this.txtUsuarios.Location = new System.Drawing.Point(12, 218);
             this.txtUsuarios.Name = "txtUsuarios";
             this.txtUsuarios.Size = new System.Drawing.Size(140, 45);
             this.txtUsuarios.TabIndex = 2;
-            this.txtUsuarios.Text = "Usuarios";
+            this.txtUsuarios.Text = "Crear Usuarios";
             this.txtUsuarios.UseVisualStyleBackColor = true;
             this.txtUsuarios.Click += new System.EventHandler(this.txtUsuarios_Click);
             // 
@@ -77,11 +77,11 @@
             // 
             // btnPrivilegio
             // 
-            this.btnPrivilegio.Location = new System.Drawing.Point(139, 256);
+            this.btnPrivilegio.Location = new System.Drawing.Point(12, 320);
             this.btnPrivilegio.Name = "btnPrivilegio";
             this.btnPrivilegio.Size = new System.Drawing.Size(140, 45);
             this.btnPrivilegio.TabIndex = 4;
-            this.btnPrivilegio.Text = "Privilegio";
+            this.btnPrivilegio.Text = "Crear Privilegio";
             this.btnPrivilegio.UseVisualStyleBackColor = true;
             this.btnPrivilegio.Click += new System.EventHandler(this.btnPrivilegio_Click);
             // 

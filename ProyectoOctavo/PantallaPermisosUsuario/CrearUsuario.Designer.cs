@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnCrear = new System.Windows.Forms.Button();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.Usuario = new System.Windows.Forms.Label();
@@ -36,6 +37,14 @@
             this.cbxTypeUser = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnRegresar = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.nameUserDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.proyectoOctavoUserTypesDataSet = new ProyectoOctavo.ProyectoOctavoUserTypesDataSet();
+            this.usersTableAdapter = new ProyectoOctavo.ProyectoOctavoUserTypesDataSetTableAdapters.UsersTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.proyectoOctavoUserTypesDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCrear
@@ -109,11 +118,45 @@
             this.btnRegresar.UseVisualStyleBackColor = true;
             this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nameUserDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.usersBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(333, 12);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(270, 417);
+            this.dataGridView1.TabIndex = 8;
+            // 
+            // nameUserDataGridViewTextBoxColumn
+            // 
+            this.nameUserDataGridViewTextBoxColumn.DataPropertyName = "NameUser";
+            this.nameUserDataGridViewTextBoxColumn.HeaderText = "NameUser";
+            this.nameUserDataGridViewTextBoxColumn.Name = "nameUserDataGridViewTextBoxColumn";
+            // 
+            // usersBindingSource
+            // 
+            this.usersBindingSource.DataMember = "Users";
+            this.usersBindingSource.DataSource = this.proyectoOctavoUserTypesDataSet;
+            // 
+            // proyectoOctavoUserTypesDataSet
+            // 
+            this.proyectoOctavoUserTypesDataSet.DataSetName = "ProyectoOctavoUserTypesDataSet";
+            this.proyectoOctavoUserTypesDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // usersTableAdapter
+            // 
+            this.usersTableAdapter.ClearBeforeFill = true;
+            // 
             // CrearUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(615, 432);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbxTypeUser);
@@ -124,6 +167,10 @@
             this.Controls.Add(this.btnCrear);
             this.Name = "CrearUsuario";
             this.Text = "CrearUsuario";
+            this.Load += new System.EventHandler(this.CrearUsuario_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.proyectoOctavoUserTypesDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,5 +186,10 @@
         private System.Windows.Forms.ComboBox cbxTypeUser;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnRegresar;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private ProyectoOctavoUserTypesDataSet proyectoOctavoUserTypesDataSet;
+        private System.Windows.Forms.BindingSource usersBindingSource;
+        private ProyectoOctavoUserTypesDataSetTableAdapters.UsersTableAdapter usersTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameUserDataGridViewTextBoxColumn;
     }
 }

@@ -16,51 +16,102 @@ namespace ProyectoOctavo.PantallaPermisosUsuario
         public PermisosDeUsuario()
         {
             InitializeComponent();
+            refreshData2();
         }
 
-        private void PermisosDeUsuario_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'proyectoOctavoUserTypesDataSet.Users' table. You can move, or remove it, as needed.
-            this.usersTableAdapter.Fill(this.proyectoOctavoUserTypesDataSet.Users);
 
-        }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+
+
+       
+        public void refreshData2()
         {
-            SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-RBGA42V;Initial Catalog=ProyectoOctavoUserTypes;Integrated Security=True");
-            SqlCommand cmd = new SqlCommand("select * from Privilegios", con);
-            SqlDataAdapter sda = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            sda.Fill(dt);
-  bool result;
-            int numberOfCalls;
-            for (int i = 0; i < dt.Rows.Count; i++)
+            SqlConnection con2 = new SqlConnection(@"Data Source=DESKTOP-RBGA42V;Initial Catalog=ProyectoOctavoUserTypes;Integrated Security=True");
+            SqlCommand cmd2 = new SqlCommand("select * from Users", con2);
+            SqlDataAdapter sda2 = new SqlDataAdapter(cmd2);
+            DataTable dt2 = new DataTable();
+            sda2.Fill(dt2);
+
+            for (int x = 0; x < dt2.Rows.Count; x++)
             {
-              
-                foreach (DataRow dr in dt.Rows)
-                {
-                    result = Int32.TryParse(dr["StatusPrivilegio"].ToString(), out numberOfCalls);
-                }
-                checkedListBox1.Items.Add(dt.Rows[i]["NamePrivilegio"].ToString());
-                //if (dt.Rows[i].ItemArray.)
-                //{ }
-                checkedListBox1.SetItemChecked(i, true);
-              
-                //if (listBox1.SelectedIndex != 0)
-                 //{
 
-                //    checkedListBox1.Items.Add(dt.Rows[i]["NamePrivilegio"].ToString());
-                //    checkedListBox1.SetItemChecked(i, true);
+                checkedListBox3.Items.Add(dt2.Rows[x]["NameUser"].ToString());
+                //int row;
+                //bool result;
+                //foreach (DataRow dr in dt2.Rows)
+                //{
+                //    result = Int32.TryParse(dr["NameUser"].ToString(), out row);
+                //    var n = dr.ItemArray.ToList();
+
+                //    // if (checkedListBox3.SelectedIndex) { }
+                //    checkedListBox2.SetItemChecked(x, true);
+
                 //}
+                // checkedListBox3.SetItemChecked(x, true);
 
-                //
 
             }
         }
-
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+
+        }
+
+        private void checkedListBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SqlConnection con2 = new SqlConnection(@"Data Source=DESKTOP-RBGA42V;Initial Catalog=ProyectoOctavoUserTypes;Integrated Security=True");
+            SqlCommand cmd2 = new SqlCommand("select * from TypeUser", con2);
+            SqlDataAdapter sda2 = new SqlDataAdapter(cmd2);
+            DataTable dt2 = new DataTable();
+            sda2.Fill(dt2);
+
+            for (int x = 0; x < dt2.Rows.Count; x++)
+            {
+
+                checkedListBox2.Items.Add(dt2.Rows[x]["NameTypeUser"].ToString());
+                //for (int i = 0; i < checkedListBox1.Items.Count; i++)
+                //{
+                //    if ((string)checkedListBox1.Items[i] == value)
+                //    {
+                //        checkedListBox1.SetItemChecked(i, true);
+                //    }
+                //}
+                // int row;
+                //bool result;
+                //foreach (DataRow dr in dt2.Rows)
+                //{
+                //    result = Int32.TryParse(dr["NameTypeUser"].ToString(), out row);
+                //        var n=   dr.ItemArray.ToList();
+                //    if (result)
+                //    {
+
+
+                //        checkedListBox2.SetItemChecked(x, true);
+                //    }
+                //    else {
+                //        checkedListBox2.SetItemChecked(x, false);
+                //    }
+                //}
+                // checkedListBox2.SetItemChecked(x, true);
+
+
+            }
+
+        }
+
+        private void checkedListBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SqlConnection con2 = new SqlConnection(@"Data Source=DESKTOP-RBGA42V;Initial Catalog=ProyectoOctavoUserTypes;Integrated Security=True");
+            SqlCommand cmd2 = new SqlCommand("select * from Privilegios", con2);
+            SqlDataAdapter sda2 = new SqlDataAdapter(cmd2);
+            DataTable dt2 = new DataTable();
+            sda2.Fill(dt2);
+
+            for (int x = 0; x < dt2.Rows.Count; x++)
+            {
+
+                checkedListBox1.Items.Add(dt2.Rows[x]["NamePrivilegio"].ToString());
+            }
         }
     }
 }
