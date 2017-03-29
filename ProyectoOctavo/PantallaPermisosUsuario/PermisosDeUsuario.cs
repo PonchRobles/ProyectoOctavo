@@ -23,7 +23,7 @@ namespace ProyectoOctavo.PantallaPermisosUsuario
 
 
 
-       
+
         public void refreshData2()
         {
             SqlConnection con2 = new SqlConnection(@"Data Source=DESKTOP-RBGA42V;Initial Catalog=ProyectoOctavoUserTypes;Integrated Security=True");
@@ -67,8 +67,27 @@ namespace ProyectoOctavo.PantallaPermisosUsuario
 
             for (int x = 0; x < dt2.Rows.Count; x++)
             {
+                foreach (var xenial in checkedListBox2.Items)
+                {
+                    if (xenial.ToString() != string.Empty)
+                    {
+                        switch (dt2.Rows[0]["UderTypeId"] as string)
+                        {
+                            case "Admon":
+                                {
+                                    checkedListBox2.Items.Add(dt2.Rows[x]["NameTypeUser"].ToString());
+                                    checkedListBox2.SetItemChecked(x, true);
+                                    break;
+                                }
+                            default:
+                                {
+                                    MessageBox.Show("NOTBABY");
+                                    break;
+                                }
+                        }
+                    }
+                }
 
-                checkedListBox2.Items.Add(dt2.Rows[x]["NameTypeUser"].ToString());
                 //for (int i = 0; i < checkedListBox1.Items.Count; i++)
                 //{
                 //    if ((string)checkedListBox1.Items[i] == value)
@@ -112,6 +131,13 @@ namespace ProyectoOctavo.PantallaPermisosUsuario
 
                 checkedListBox1.Items.Add(dt2.Rows[x]["NamePrivilegio"].ToString());
             }
+        }
+
+        private void PermisosDeUsuario_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'proyectoOctavoUserTypesDataSet.Users' table. You can move, or remove it, as needed.
+            //this.usersTableAdapter.Fill(this.proyectoOctavoUserTypesDataSet.Users);
+
         }
     }
 }

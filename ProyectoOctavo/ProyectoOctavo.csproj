@@ -100,6 +100,24 @@
     <Compile Include="PantallaPermisosUsuario\PermisosDeUsuario.Designer.cs">
       <DependentUpon>PermisosDeUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="PantallaPermisosUsuario\VistaTotal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PantallaPermisosUsuario\VistaTotal.Designer.cs">
+      <DependentUpon>VistaTotal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PantallasUsers\DasboardBodega.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PantallasUsers\DasboardBodega.Designer.cs">
+      <DependentUpon>DasboardBodega.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PantallasUsers\DashboardVendedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PantallasUsers\DashboardVendedor.Designer.cs">
+      <DependentUpon>DashboardVendedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProyectoOctavoUserTypesDataSet.Designer.cs">
@@ -127,6 +145,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PantallaPermisosUsuario\PermisosDeUsuario.resx">
       <DependentUpon>PermisosDeUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PantallaPermisosUsuario\VistaTotal.resx">
+      <DependentUpon>VistaTotal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PantallasUsers\DasboardBodega.resx">
+      <DependentUpon>DasboardBodega.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PantallasUsers\DashboardVendedor.resx">
+      <DependentUpon>DashboardVendedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

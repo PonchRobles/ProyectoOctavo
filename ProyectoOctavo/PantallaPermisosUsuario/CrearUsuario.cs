@@ -30,6 +30,8 @@ namespace ProyectoOctavo.PantallaPermisosUsuario
                 MessageBox.Show("Alguno de los campos Usuario y Password estan vacios");
 
             }
+
+          //  if () { }
             try
             {
                 SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-RBGA42V;Initial Catalog=ProyectoOctavoUserTypes;Integrated Security=True");

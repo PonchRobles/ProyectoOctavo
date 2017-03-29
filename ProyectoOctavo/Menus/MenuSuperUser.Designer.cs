@@ -33,13 +33,14 @@
             this.txtUsuarios = new System.Windows.Forms.Button();
             this.txtSalir = new System.Windows.Forms.Button();
             this.btnPrivilegio = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtPermisos
             // 
-            this.txtPermisos.Location = new System.Drawing.Point(12, 12);
+            this.txtPermisos.Location = new System.Drawing.Point(13, 7);
             this.txtPermisos.Name = "txtPermisos";
-            this.txtPermisos.Size = new System.Drawing.Size(140, 47);
+            this.txtPermisos.Size = new System.Drawing.Size(140, 45);
             this.txtPermisos.TabIndex = 0;
             this.txtPermisos.Text = "Ver Permisos";
             this.txtPermisos.UseVisualStyleBackColor = true;
@@ -47,7 +48,7 @@
             // 
             // txtTipoDeUsuario
             // 
-            this.txtTipoDeUsuario.Location = new System.Drawing.Point(12, 269);
+            this.txtTipoDeUsuario.Location = new System.Drawing.Point(13, 58);
             this.txtTipoDeUsuario.Name = "txtTipoDeUsuario";
             this.txtTipoDeUsuario.Size = new System.Drawing.Size(140, 45);
             this.txtTipoDeUsuario.TabIndex = 1;
@@ -57,7 +58,7 @@
             // 
             // txtUsuarios
             // 
-            this.txtUsuarios.Location = new System.Drawing.Point(12, 218);
+            this.txtUsuarios.Location = new System.Drawing.Point(159, 58);
             this.txtUsuarios.Name = "txtUsuarios";
             this.txtUsuarios.Size = new System.Drawing.Size(140, 45);
             this.txtUsuarios.TabIndex = 2;
@@ -67,7 +68,7 @@
             // 
             // txtSalir
             // 
-            this.txtSalir.Location = new System.Drawing.Point(356, 353);
+            this.txtSalir.Location = new System.Drawing.Point(224, 353);
             this.txtSalir.Name = "txtSalir";
             this.txtSalir.Size = new System.Drawing.Size(75, 23);
             this.txtSalir.TabIndex = 3;
@@ -77,7 +78,7 @@
             // 
             // btnPrivilegio
             // 
-            this.btnPrivilegio.Location = new System.Drawing.Point(12, 320);
+            this.btnPrivilegio.Location = new System.Drawing.Point(159, 7);
             this.btnPrivilegio.Name = "btnPrivilegio";
             this.btnPrivilegio.Size = new System.Drawing.Size(140, 45);
             this.btnPrivilegio.TabIndex = 4;
@@ -85,11 +86,22 @@
             this.btnPrivilegio.UseVisualStyleBackColor = true;
             this.btnPrivilegio.Click += new System.EventHandler(this.btnPrivilegio_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(118, 183);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "VistaTotal";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MenuSuperUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(443, 388);
+            this.ClientSize = new System.Drawing.Size(311, 388);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnPrivilegio);
             this.Controls.Add(this.txtSalir);
             this.Controls.Add(this.txtUsuarios);
@@ -97,6 +109,7 @@
             this.Controls.Add(this.txtPermisos);
             this.Name = "MenuSuperUser";
             this.Text = "MenuSuperUser";
+            this.Load += new System.EventHandler(this.MenuSuperUser_Load);
             this.ResumeLayout(false);
 
         }
@@ -108,5 +121,6 @@
         private System.Windows.Forms.Button txtUsuarios;
         private System.Windows.Forms.Button txtSalir;
         private System.Windows.Forms.Button btnPrivilegio;
+        private System.Windows.Forms.Button button1;
     }
 }

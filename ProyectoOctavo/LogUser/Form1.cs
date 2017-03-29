@@ -68,10 +68,9 @@ if (txtUser.Text == "" || txtContrasenna.Text == "")
                             }
                         case 2:
                             {
-                                //this.Hide();
-                                //AdminMenu ss = new AdminMenu();
-                                //ss.Show();
-                                MessageBox.Show("MAMALONVENTAS");
+                                this.Hide();
+                                PantallasUsers.DashboardVendedor ss = new PantallasUsers.DashboardVendedor();
+                                ss.Show();
 
                                 break;
                             }

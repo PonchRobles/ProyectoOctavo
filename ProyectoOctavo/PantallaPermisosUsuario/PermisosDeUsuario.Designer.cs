@@ -70,6 +70,7 @@
             this.Controls.Add(this.checkedListBox1);
             this.Name = "PermisosDeUsuario";
             this.Text = "PermisosDeUsuario";
+            this.Load += new System.EventHandler(this.PermisosDeUsuario_Load);
             this.ResumeLayout(false);
 
         }
