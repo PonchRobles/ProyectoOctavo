@@ -57,5 +57,12 @@ namespace ProyectoOctavo.PantallaPermisosUsuario
         {
 
         }
+
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Menus.MenuSuperUser ss = new Menus.MenuSuperUser();
+            ss.Show();
+        }
     }
 }

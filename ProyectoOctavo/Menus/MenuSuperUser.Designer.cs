@@ -34,6 +34,7 @@
             this.txtSalir = new System.Windows.Forms.Button();
             this.btnPrivilegio = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.txtDarTipoUser = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtPermisos
@@ -68,7 +69,7 @@
             // 
             // txtSalir
             // 
-            this.txtSalir.Location = new System.Drawing.Point(224, 353);
+            this.txtSalir.Location = new System.Drawing.Point(118, 212);
             this.txtSalir.Name = "txtSalir";
             this.txtSalir.Size = new System.Drawing.Size(75, 23);
             this.txtSalir.TabIndex = 3;
@@ -96,11 +97,22 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // txtDarTipoUser
+            // 
+            this.txtDarTipoUser.Location = new System.Drawing.Point(90, 109);
+            this.txtDarTipoUser.Name = "txtDarTipoUser";
+            this.txtDarTipoUser.Size = new System.Drawing.Size(130, 42);
+            this.txtDarTipoUser.TabIndex = 6;
+            this.txtDarTipoUser.Text = "Dar Tipo a usuario";
+            this.txtDarTipoUser.UseVisualStyleBackColor = true;
+            this.txtDarTipoUser.Click += new System.EventHandler(this.txtDarTipoUser_Click);
+            // 
             // MenuSuperUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(311, 388);
+            this.Controls.Add(this.txtDarTipoUser);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnPrivilegio);
             this.Controls.Add(this.txtSalir);
@@ -122,5 +134,6 @@
         private System.Windows.Forms.Button txtSalir;
         private System.Windows.Forms.Button btnPrivilegio;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button txtDarTipoUser;
     }
 }

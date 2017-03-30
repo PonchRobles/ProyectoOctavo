@@ -13,6 +13,7 @@ namespace ProyectoOctavo
 {
     public partial class Entrar : MetroForm
     {
+       // int ;
         SqlConnection con = new SqlConnection();
 
         string cs = "Data Source=DESKTOP-RBGA42V;Initial Catalog=ProyectoOctavoUserTypes;Integrated Security=True";
@@ -50,8 +51,14 @@ if (txtUser.Text == "" || txtContrasenna.Text == "")
                 DataTable ds = new DataTable();
                 adapt.Fill(ds);
                 con.Close();
-               // int count = ds.Tables[0].Rows.Count;
-
+                // int count = ds.Tables[0].Rows.Count;
+                SqlConnection con2 = new SqlConnection(cs);
+                SqlCommand cmd2 = new SqlCommand("Select IdUser from Users where NameUser=@nameuser and Password=@password", con2);
+                cmd2.Parameters.AddWithValue("@nameuser", txtUser.Text);
+                cmd2.Parameters.AddWithValue("@password", txtContrasenna.Text);
+                con2.Open();
+                int IdUser = Convert.ToInt32(cmd2.ExecuteScalar().ToString());
+                con2.Close();
                 //If count is equal to 1, than show frmMain form
                 if (ds.Rows.Count == 1)
                 {
@@ -62,21 +69,25 @@ if (txtUser.Text == "" || txtContrasenna.Text == "")
                                 this.Hide();
                                Menus.MenuSuperUser ss = new Menus.MenuSuperUser();
                                 ss.Show();
-                               // MessageBox.Show("MAMALON");
+                                // MessageBox.Show("MAMALON");
+                               
 
                                 break;
                             }
-                        case 2:
-                            {
-                                this.Hide();
-                                PantallasUsers.DashboardVendedor ss = new PantallasUsers.DashboardVendedor();
-                                ss.Show();
+                        //case 2:
+                        //    {
+                        //        this.Hide();
+                        //        PantallasUsers.DashboardVendedor ss = new PantallasUsers.DashboardVendedor();
+                        //        ss.Show();
 
-                                break;
-                            }
+                        //        break;
+                        //    }
                         default:
                             {
-                                MessageBox.Show("NOTBABY");
+                              //  MessageBox.Show("NOTBABY");
+                                PantallasUsers.Generic alta = new PantallasUsers.Generic(IdUser);
+                                this.Hide();
+                                alta.Show();
                                 break;
                             }
                     }

@@ -111,7 +111,7 @@ namespace ProyectoOctavo.PantallaPermisosUsuario
         private void CrearPrivilegio_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'proyectoOctavoUserTypesDataSet.Privilegios' table. You can move, or remove it, as needed.
-            this.privilegiosTableAdapter.Fill(this.proyectoOctavoUserTypesDataSet.Privilegios);
+         //   this.privilegiosTableAdapter.Fill(this.proyectoOctavoUserTypesDataSet.Privilegios);
 
         }
     }

@@ -16,7 +16,8 @@ namespace ProyectoOctavo.Menus
         public MenuSuperUser()
         {
             InitializeComponent();
-         
+            
+
         }
 
         private void txtPermisos_Click(object sender, EventArgs e)
@@ -67,6 +68,19 @@ namespace ProyectoOctavo.Menus
             this.Hide();
             PantallaPermisosUsuario.VistaTotal ss = new PantallaPermisosUsuario.VistaTotal();
             ss.Show();
+        }
+
+        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDarTipoUser_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            PantallaPermisosUsuario.DarTipoAUsuario ss = new PantallaPermisosUsuario.DarTipoAUsuario();
+            ss.Show();
+
         }
     }
 }

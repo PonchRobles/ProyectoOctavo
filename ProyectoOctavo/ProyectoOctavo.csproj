@@ -94,6 +94,12 @@
     <Compile Include="PantallaPermisosUsuario\CrearUsuario.Designer.cs">
       <DependentUpon>CrearUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="PantallaPermisosUsuario\DarTipoAUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PantallaPermisosUsuario\DarTipoAUsuario.Designer.cs">
+      <DependentUpon>DarTipoAUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="PantallaPermisosUsuario\PermisosDeUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,25 +112,20 @@
     <Compile Include="PantallaPermisosUsuario\VistaTotal.Designer.cs">
       <DependentUpon>VistaTotal.cs</DependentUpon>
     </Compile>
-    <Compile Include="PantallasUsers\DasboardBodega.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PantallasUsers\DasboardBodega.Designer.cs">
-      <DependentUpon>DasboardBodega.cs</DependentUpon>
-    </Compile>
     <Compile Include="PantallasUsers\DashboardVendedor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PantallasUsers\DashboardVendedor.Designer.cs">
       <DependentUpon>DashboardVendedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="PantallasUsers\Generic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PantallasUsers\Generic.Designer.cs">
+      <DependentUpon>Generic.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ProyectoOctavoUserTypesDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ProyectoOctavoUserTypesDataSet.xsd</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="LogUser\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -143,17 +144,20 @@
     <EmbeddedResource Include="PantallaPermisosUsuario\CrearUsuario.resx">
       <DependentUpon>CrearUsuario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PantallaPermisosUsuario\DarTipoAUsuario.resx">
+      <DependentUpon>DarTipoAUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PantallaPermisosUsuario\PermisosDeUsuario.resx">
       <DependentUpon>PermisosDeUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PantallaPermisosUsuario\VistaTotal.resx">
       <DependentUpon>VistaTotal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PantallasUsers\DasboardBodega.resx">
-      <DependentUpon>DasboardBodega.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="PantallasUsers\DashboardVendedor.resx">
       <DependentUpon>DashboardVendedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PantallasUsers\Generic.resx">
+      <DependentUpon>Generic.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -174,17 +178,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="ProyectoOctavoUserTypesDataSet.xsc">
-      <DependentUpon>ProyectoOctavoUserTypesDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="ProyectoOctavoUserTypesDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ProyectoOctavoUserTypesDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="ProyectoOctavoUserTypesDataSet.xss">
-      <DependentUpon>ProyectoOctavoUserTypesDataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

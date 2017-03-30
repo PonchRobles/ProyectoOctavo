@@ -33,6 +33,7 @@
             this.NamePrivilegio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NameTypeUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NameUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnRegresar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,11 +77,22 @@
             this.NameUser.Name = "NameUser";
             this.NameUser.ReadOnly = true;
             // 
+            // btnRegresar
+            // 
+            this.btnRegresar.Location = new System.Drawing.Point(469, 448);
+            this.btnRegresar.Name = "btnRegresar";
+            this.btnRegresar.Size = new System.Drawing.Size(75, 23);
+            this.btnRegresar.TabIndex = 1;
+            this.btnRegresar.Text = "Regresar";
+            this.btnRegresar.UseVisualStyleBackColor = true;
+            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
+            // 
             // VistaTotal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(580, 488);
+            this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.dataGridView1);
             this.Name = "VistaTotal";
             this.Text = "VistaTotal";
@@ -97,5 +109,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NamePrivilegio;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameTypeUser;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameUser;
+        private System.Windows.Forms.Button btnRegresar;
     }
 }

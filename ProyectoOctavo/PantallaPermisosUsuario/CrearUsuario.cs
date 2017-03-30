@@ -46,12 +46,12 @@ namespace ProyectoOctavo.PantallaPermisosUsuario
                 int i = cmd.ExecuteNonQuery();
 
                 con.Close();
-                dataGridView1.Update();
-                dataGridView1.Refresh();
+                //dataGridView1.Update();
+                //dataGridView1.Refresh();
                 if (i != 0)
                 {
-                    this.dataGridView1.Update();
-                    this.dataGridView1.Refresh();
+                    //this.dataGridView1.Update();
+                    //this.dataGridView1.Refresh();
                     
                     MessageBox.Show("Usuario creado!");
                 }
@@ -108,7 +108,7 @@ namespace ProyectoOctavo.PantallaPermisosUsuario
         private void CrearUsuario_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'proyectoOctavoUserTypesDataSet.Users' table. You can move, or remove it, as needed.
-            this.usersTableAdapter.Fill(this.proyectoOctavoUserTypesDataSet.Users);
+          //  this.usersTableAdapter.Fill(this.proyectoOctavoUserTypesDataSet.Users);
 
         }
     }
