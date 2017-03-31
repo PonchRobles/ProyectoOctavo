@@ -28,11 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnCrear = new System.Windows.Forms.Button();
             this.txtTypeUserName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnRegresar = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.proyectoOctavoUserTypesDataSet = new ProyectoOctavo.ProyectoOctavoUserTypesDataSet();
+            this.privilegiosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.privilegiosTableAdapter = new ProyectoOctavo.ProyectoOctavoUserTypesDataSetTableAdapters.PrivilegiosTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.proyectoOctavoUserTypesDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.privilegiosBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCrear
@@ -74,12 +80,28 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DataSource = this.privilegiosBindingSource;
+            this.comboBox1.DisplayMember = "NamePrivilegio";
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(20, 63);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(100, 21);
             this.comboBox1.TabIndex = 4;
             this.comboBox1.ValueMember = "IdPrivilegio";
+            // 
+            // proyectoOctavoUserTypesDataSet
+            // 
+            this.proyectoOctavoUserTypesDataSet.DataSetName = "ProyectoOctavoUserTypesDataSet";
+            this.proyectoOctavoUserTypesDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // privilegiosBindingSource
+            // 
+            this.privilegiosBindingSource.DataMember = "Privilegios";
+            this.privilegiosBindingSource.DataSource = this.proyectoOctavoUserTypesDataSet;
+            // 
+            // privilegiosTableAdapter
+            // 
+            this.privilegiosTableAdapter.ClearBeforeFill = true;
             // 
             // CrearTipoDeUsuario
             // 
@@ -94,6 +116,8 @@
             this.Name = "CrearTipoDeUsuario";
             this.Text = "CrearTipoDeUsuario";
             this.Load += new System.EventHandler(this.CrearTipoDeUsuario_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.proyectoOctavoUserTypesDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.privilegiosBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -106,6 +130,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnRegresar;
         private System.Windows.Forms.ComboBox comboBox1;
-       
+        private ProyectoOctavoUserTypesDataSet proyectoOctavoUserTypesDataSet;
+        private System.Windows.Forms.BindingSource privilegiosBindingSource;
+        private ProyectoOctavoUserTypesDataSetTableAdapters.PrivilegiosTableAdapter privilegiosTableAdapter;
     }
 }

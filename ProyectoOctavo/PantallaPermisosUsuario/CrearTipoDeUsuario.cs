@@ -31,7 +31,7 @@ namespace ProyectoOctavo.PantallaPermisosUsuario
            
             DataTable ds = new DataTable();
             cmd.Parameters.AddWithValue("@NameTypeUser", txtTypeUserName.Text);
-            cmd.Parameters.AddWithValue("@IdPrivilegio", comboBox1.SelectedIndex);
+            cmd.Parameters.AddWithValue("@IdPrivilegio", comboBox1.SelectedValue);
 
             con.Open();
             int i = cmd.ExecuteNonQuery();
@@ -53,7 +53,9 @@ namespace ProyectoOctavo.PantallaPermisosUsuario
 
         private void CrearTipoDeUsuario_Load(object sender, EventArgs e)
         {
-            
+            // TODO: This line of code loads data into the 'proyectoOctavoUserTypesDataSet.Privilegios' table. You can move, or remove it, as needed.
+            this.privilegiosTableAdapter.Fill(this.proyectoOctavoUserTypesDataSet.Privilegios);
+
 
         }
     }

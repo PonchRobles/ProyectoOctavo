@@ -88,14 +88,9 @@ namespace ProyectoOctavo.PantallasUsers
         }
         private void botondinamic(object sender, System.EventArgs e)
         {
-            MessageBox.Show("hola " + this.ActiveControl.Text);
+            MessageBox.Show( this.ActiveControl.Text);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //this.Hide();
-            //LogUser.Form1 ss = new Menus.MenuSuperUser();
-            //ss.Show()
-        }
+      
     }
 }
