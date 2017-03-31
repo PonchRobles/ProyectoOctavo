@@ -16,25 +16,22 @@ namespace ProyectoOctavo.PantallaPermisosUsuario
         public DarTipoAUsuario()
         {
             InitializeComponent();
+            FirstDrop();
             refreshdata();
         }
 
         private void DarTipoAUsuario_Load(object sender, EventArgs e)
         {
-          
+            // TODO: This line of code loads data into the 'proyectoOctavoUserTypesDataSet.Users' table. You can move, or remove it, as needed.
+            this.usersTableAdapter.Fill(this.proyectoOctavoUserTypesDataSet.Users);
+            // TODO: This line of code loads data into the 'proyectoOctavoUserTypesDataSet.Users' table. You can move, or remove it, as needed.
+            //  this.usersTableAdapter.Fill(this.proyectoOctavoUserTypesDataSet.Users);
+
 
         }
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
-
-            //if (txtUsuario.Text == string.Empty && txtPassword.Text == string.Empty)
-            //{
-            //    MessageBox.Show("Alguno de los campos Usuario y Password estan vacios");
-
-            //}
-
-            //  if () { }
             try
             {
                 SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-RBGA42V;Initial Catalog=ProyectoOctavoUserTypes;Integrated Security=True");
@@ -76,7 +73,7 @@ namespace ProyectoOctavo.PantallaPermisosUsuario
             SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-RBGA42V;Initial Catalog=ProyectoOctavoUserTypes;Integrated Security=True");
             //SqlConnection con = new SqlConnection(@"Data Source = DESKTOP-RBGA42V; Initial Catalog = ProyectoOctavoUserTypes; Integrated Security = True");
             con.Open();
-            SqlCommand cmd = new SqlCommand("select TypeUser.NameTypeUser from TypeUser inner join Users on '"+comboBox1.SelectedValue +"' = TypeUser.UderTypeId", con);
+            SqlCommand cmd = new SqlCommand("select TypeUser.NameTypeUser from TypeUser inner join Users on '"+comboBox1.SelectedIndex +"' = TypeUser.UderTypeId", con);
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             sda.Fill(dt);
@@ -92,12 +89,40 @@ namespace ProyectoOctavo.PantallaPermisosUsuario
 
             con.Close();
         }
+        public void FirstDrop()
+        {
+            DataRow dr;
+
+            SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-RBGA42V;Initial Catalog=ProyectoOctavoUserTypes;Integrated Security=True");
+            //SqlConnection con = new SqlConnection(@"Data Source = DESKTOP-RBGA42V; Initial Catalog = ProyectoOctavoUserTypes; Integrated Security = True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select * from Users", con);
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+
+            //dr = dt.NewRow();
+
+            //dt.Rows.InsertAt(dr, 0);
+
+            comboBox1.ValueMember = "UserTypeId";
+
+            comboBox1.DisplayMember = "NameUser";
+            comboBox1.DataSource = dt;
+
+            con.Close();
+        }
 
         private void btnRegresar_Click(object sender, EventArgs e)
         {
             this.Hide();
             Menus.MenuSuperUser ss = new Menus.MenuSuperUser();
             ss.Show();
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

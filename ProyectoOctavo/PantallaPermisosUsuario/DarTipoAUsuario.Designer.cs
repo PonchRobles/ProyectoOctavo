@@ -30,39 +30,50 @@
         {
             this.components = new System.ComponentModel.Container();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-          this.usersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.typeUserBindingSource = new System.Windows.Forms.BindingSource(this.components);   this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.privilegiosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.privilegiosBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.proyectoOctavoUserTypesDataSet = new ProyectoOctavo.ProyectoOctavoUserTypesDataSet();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.btnCrear = new System.Windows.Forms.Button();
             this.btnRegresar = new System.Windows.Forms.Button();
+            this.usersTableAdapter = new ProyectoOctavo.ProyectoOctavoUserTypesDataSetTableAdapters.UsersTableAdapter();
+            this.usersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.proyectoOctavoUserTypesDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.typeUserBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.privilegiosBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.privilegiosBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBox1
             // 
-            this.comboBox1.DataSource = this.usersBindingSource;
-            this.comboBox1.DisplayMember = "NameUser";
+            this.comboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.usersBindingSource1, "UserTypeId", true));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(76, 50);
+            this.comboBox1.Location = new System.Drawing.Point(75, 47);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 0;
-            this.comboBox1.ValueMember = "IdUser";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
+            // comboBox2
+            // 
+            this.comboBox2.Location = new System.Drawing.Point(75, 74);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 21);
+            this.comboBox2.TabIndex = 5;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            // 
             // usersBindingSource
-         
+            // 
+            this.usersBindingSource.DataMember = "Users";
+            this.usersBindingSource.DataSource = this.proyectoOctavoUserTypesDataSet;
+            // 
+            // proyectoOctavoUserTypesDataSet
+            // 
+            this.proyectoOctavoUserTypesDataSet.DataSetName = "ProyectoOctavoUserTypesDataSet";
+            this.proyectoOctavoUserTypesDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // comboBox3
             // 
-            this.comboBox3.DataSource = this.privilegiosBindingSource;
-            this.comboBox3.DisplayMember = "NamePrivilegio";
+            this.comboBox3.DisplayMember = "IdPrivilegio";
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Location = new System.Drawing.Point(76, 128);
             this.comboBox3.Name = "comboBox3";
@@ -70,9 +81,7 @@
             this.comboBox3.TabIndex = 2;
             this.comboBox3.ValueMember = "IdPrivilegio";
             // 
-            // privilegiosBindingSource
-            // 
-       
+            // btnCrear
             // 
             this.btnCrear.Location = new System.Drawing.Point(76, 170);
             this.btnCrear.Name = "btnCrear";
@@ -92,6 +101,15 @@
             this.btnRegresar.UseVisualStyleBackColor = true;
             this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
+            // usersTableAdapter
+            // 
+            this.usersTableAdapter.ClearBeforeFill = true;
+            // 
+            // usersBindingSource1
+            // 
+            this.usersBindingSource1.DataMember = "Users";
+            this.usersBindingSource1.DataSource = this.proyectoOctavoUserTypesDataSet;
+            // 
             // DarTipoAUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -106,11 +124,8 @@
             this.Text = "DarTipoAUsuario";
             this.Load += new System.EventHandler(this.DarTipoAUsuario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
-            
+            ((System.ComponentModel.ISupportInitialize)(this.proyectoOctavoUserTypesDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.typeUserBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.privilegiosBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.privilegiosBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -118,18 +133,14 @@
         #endregion
 
         private System.Windows.Forms.ComboBox comboBox1;
-      
-        private System.Windows.Forms.BindingSource usersBindingSource;
-       
-        private System.Windows.Forms.BindingSource usersBindingSource1;
         private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.BindingSource typeUserBindingSource;
        
         private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.BindingSource privilegiosBindingSource;
-     
-        private System.Windows.Forms.BindingSource privilegiosBindingSource1;
         private System.Windows.Forms.Button btnCrear;
         private System.Windows.Forms.Button btnRegresar;
+        private ProyectoOctavoUserTypesDataSet proyectoOctavoUserTypesDataSet;
+        private System.Windows.Forms.BindingSource usersBindingSource;
+        private ProyectoOctavoUserTypesDataSetTableAdapters.UsersTableAdapter usersTableAdapter;
+        private System.Windows.Forms.BindingSource usersBindingSource1;
     }
 }
