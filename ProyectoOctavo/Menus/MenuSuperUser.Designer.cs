@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtPermisos = new System.Windows.Forms.Button();
             this.txtTipoDeUsuario = new System.Windows.Forms.Button();
             this.txtUsuarios = new System.Windows.Forms.Button();
             this.txtSalir = new System.Windows.Forms.Button();
@@ -36,16 +35,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.txtDarTipoUser = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // txtPermisos
-            // 
-            this.txtPermisos.Location = new System.Drawing.Point(13, 7);
-            this.txtPermisos.Name = "txtPermisos";
-            this.txtPermisos.Size = new System.Drawing.Size(140, 45);
-            this.txtPermisos.TabIndex = 0;
-            this.txtPermisos.Text = "Ver Permisos";
-            this.txtPermisos.UseVisualStyleBackColor = true;
-            this.txtPermisos.Click += new System.EventHandler(this.txtPermisos_Click);
             // 
             // txtTipoDeUsuario
             // 
@@ -118,7 +107,6 @@
             this.Controls.Add(this.txtSalir);
             this.Controls.Add(this.txtUsuarios);
             this.Controls.Add(this.txtTipoDeUsuario);
-            this.Controls.Add(this.txtPermisos);
             this.Name = "MenuSuperUser";
             this.Text = "MenuSuperUser";
             this.Load += new System.EventHandler(this.MenuSuperUser_Load);
@@ -127,8 +115,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button txtPermisos;
         private System.Windows.Forms.Button txtTipoDeUsuario;
         private System.Windows.Forms.Button txtUsuarios;
         private System.Windows.Forms.Button txtSalir;

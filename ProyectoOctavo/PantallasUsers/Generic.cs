@@ -31,8 +31,8 @@ namespace ProyectoOctavo.PantallasUsers
         public void cargar_permisos()
         {
             string sql = @"select IdPrivilegio , NamePrivilegio from Privilegios where IdPrivilegio in (
-            Select Idprivilegio from UserWithTypeUserAndPrivilegios where IdTyperUser = 
-			(Select IdTyperUser from Users where IdUser = @IdUser))";
+            Select IdPrivilegio from TypeUser where UderTypeId = 
+			(Select UserTypeId from Users where IdUser = @IdUser))";
 
 
             con = new System.Data.SqlClient.SqlConnection();
