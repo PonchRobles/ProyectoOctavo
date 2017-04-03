@@ -38,8 +38,8 @@ namespace ProyectoOctavo.PantallaPermisosUsuario
                 SqlCommand cmd = new SqlCommand("insert into UserWithTypeUserAndPrivilegios ( IdTyperUser,Idprivilegio)values(@IdTyperUser, @Idprivilegio)", con);
 
                 DataTable ds = new DataTable();
-              //  cmd.Parameters.AddWithValue("@IdUser", comboBox1.SelectedIndex);
-
+                //  cmd.Parameters.AddWithValue("@IdUser", comboBox1.SelectedIndex);
+               // cmd.Parameters.AddWithValue("@IdUser", comboBox1.SelectedIndex);
                 cmd.Parameters.AddWithValue("@IdTyperUser", comboBox2.SelectedIndex);
                 cmd.Parameters.AddWithValue("@Idprivilegio", comboBox3.SelectedIndex);
 
@@ -73,7 +73,8 @@ namespace ProyectoOctavo.PantallaPermisosUsuario
             SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-RBGA42V;Initial Catalog=ProyectoOctavoUserTypes;Integrated Security=True");
             //SqlConnection con = new SqlConnection(@"Data Source = DESKTOP-RBGA42V; Initial Catalog = ProyectoOctavoUserTypes; Integrated Security = True");
             con.Open();
-            SqlCommand cmd = new SqlCommand("select TypeUser.NameTypeUser from TypeUser inner join Users on '"+comboBox1.SelectedIndex +"' = TypeUser.UderTypeId", con);
+            SqlCommand cmd = new SqlCommand("select TypeUser.NameTypeUser from TypeUser inner join Users on '"+comboBox1.SelectedValue
+                +"' = TypeUser.UderTypeId", con);
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             sda.Fill(dt);
@@ -106,9 +107,33 @@ namespace ProyectoOctavo.PantallaPermisosUsuario
             //dt.Rows.InsertAt(dr, 0);
 
             comboBox1.ValueMember = "UserTypeId";
-
+           // comboBox1.SelectedIndex = "IdUser";
             comboBox1.DisplayMember = "NameUser";
             comboBox1.DataSource = dt;
+
+            con.Close();
+        }
+
+        public void SecondDrop()
+        {
+            DataRow dr;
+
+            SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-RBGA42V;Initial Catalog=ProyectoOctavoUserTypes;Integrated Security=True");
+            //SqlConnection con = new SqlConnection(@"Data Source = DESKTOP-RBGA42V; Initial Catalog = ProyectoOctavoUserTypes; Integrated Security = True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select * from Privilegios", con);
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+
+            //dr = dt.NewRow();
+
+            //dt.Rows.InsertAt(dr, 0);
+
+            comboBox3.ValueMember = "IdPrivilegio";
+
+            comboBox3.DisplayMember = "NamePrivilegio";
+            comboBox3.DataSource = dt;
 
             con.Close();
         }
@@ -121,6 +146,11 @@ namespace ProyectoOctavo.PantallaPermisosUsuario
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SecondDrop();
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
